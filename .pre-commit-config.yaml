@@ -1,0 +1,60 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: mixed-line-ending
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: debug-statements
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+        args: [ --config=.flake8 ]
+        additional_dependencies:
+          - flake8-bugbear
+          - flake8-comprehensions
+          - flake8-simplify
+          - flake8-print
+          - flake8-django
+          - flake8-eradicate
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.3.0
+    hooks:
+      - id: pyupgrade
+        args: [ --py311-plus ]
+
+  - repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+      - id: black
+        language_version: python3
+        entry: black
+
+  - repo: local
+    hooks:
+      - id: check-commit-message
+        name: Check commit message
+        entry: '\A(?!\#\w+:\s.{10,})'
+        language: pygrep
+        args: [--multiline]
+        stages: [commit-msg]
+
+  - repo: https://github.com/adamchainz/django-upgrade
+    rev: 1.7.0
+    hooks:
+      - id: django-upgrade
+        args: [ --target-version, "4.0" ]
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort

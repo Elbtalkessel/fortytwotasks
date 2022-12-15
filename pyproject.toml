@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "42 TODO"
+version = "0.0.1"
+description = "TODO List"
+authors = []
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+Django = "^4.1.3"
+djangorestframework = "^3.14.0"
+
+[tool.poetry.dev-dependencies]
+factory-boy = "^3.2.1"
+ipython = "^8.4.0"
+coverage = {extras = ["toml"], version = "^6.4.1"}
+pre-commit = "^2.20.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ['py311']
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+  )/
+)
+'''
+
+[tool.coverage.run]
+source = ['.']
+omit = [
+    '*/migrations/*',
+    '*/tests/*',
+    'todo/settings.py',
+    '*/factories.py',
+    'tasks.py',
+    'manage.py',
+]
+
+[tool.coverage.report]
+fail_under = 98
+exclude_lines = [
+    'def __str__',
+    'pragma: no cover',
+    'raise AssertionError',
+    'raise NotImplementedError',
+]
+skip_covered = true
