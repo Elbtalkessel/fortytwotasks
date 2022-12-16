@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+import apps.core.api.views
 import apps.todo.views
 
 urlpatterns = [
     path("", apps.todo.views.index),
+    path("health/", apps.core.api.views.health),
     path("admin/", admin.site.urls),
 ]

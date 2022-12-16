@@ -47,6 +47,14 @@ repos:
         language: pygrep
         args: [--multiline]
         stages: [commit-msg]
+      - id: eslint
+        additional_dependencies:
+          - eslint
+          - eslint-plugin-vue
+          - eslint-plugin-tailwindcss
+        name: eslint
+        language: node
+        entry: bash -c "cd frontend && eslint --ext .vue,.js --fix src"
 
   - repo: https://github.com/adamchainz/django-upgrade
     rev: 1.7.0

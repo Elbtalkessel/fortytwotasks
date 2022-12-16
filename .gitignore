@@ -12,6 +12,7 @@
 !**/.yarn/versions
 .npm
 **/webpack-stats.json
+frontend/dist
 
 # Cache
 .eslintcache
@@ -33,6 +34,7 @@ htmlcov/
 
 # Django stuff:
 db.sqlite3
+staticfiles
 
 # Editor directories and files
 .idea

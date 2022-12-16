@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django_vite",
     "django.contrib.staticfiles",
     "apps.todo",
 ]
@@ -110,7 +112,7 @@ LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
 
-USE_I18N = True
+USE_I18N = False
 
 USE_TZ = True
 
@@ -118,8 +120,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+DJANGO_VITE_ASSETS_PATH = BASE_DIR / "frontend" / "dist"
+DJANGO_VITE_DEV_MODE = os.environ.get("DJANGO_VITE_DEV_MODE", DEBUG)
+STATICFILES_DIRS = [DJANGO_VITE_ASSETS_PATH, BASE_DIR / "frontend" / "static"]
+DJANGO_VITE_DEV_SERVER_PORT = 3001
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
