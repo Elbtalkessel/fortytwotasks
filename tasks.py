@@ -21,7 +21,7 @@ def devserver(c):
 
 @task
 def runserver(c):
-    c.run("DEBUG=False gunicorn -w 4 -b 0.0.0.0:8000 settings.wsgi:application")
+    c.run("DEBUG=False gunicorn -b 0.0.0.0:8000 settings.wsgi")
 
 
 @task
