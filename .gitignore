@@ -12,7 +12,6 @@
 !**/.yarn/versions
 .npm
 **/webpack-stats.json
-frontend/dist
 
 # Cache
 .eslintcache

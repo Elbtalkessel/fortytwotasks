@@ -126,9 +126,9 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-DJANGO_VITE_ASSETS_PATH = BASE_DIR / "frontend" / "dist"
+DJANGO_VITE_ASSETS_PATH = BASE_DIR / "frontend" / "static"
 DJANGO_VITE_DEV_MODE = config("DJANGO_VITE_DEV_MODE", default=DEBUG, cast=bool)
-STATICFILES_DIRS = [DJANGO_VITE_ASSETS_PATH, BASE_DIR / "frontend" / "static"]
+STATICFILES_DIRS = [DJANGO_VITE_ASSETS_PATH]
 DJANGO_VITE_DEV_SERVER_PORT = 3001
 
 # Default primary key field type

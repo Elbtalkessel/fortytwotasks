@@ -23,7 +23,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: resolve("./dist"),
+    outDir: resolve("./static"),
     assetsDir: "",
     manifest: true,
     emptyOutDir: true,
