@@ -21,7 +21,7 @@ def devserver(c):
 
 @task
 def test(c):
-    c.run("coverage run manage.py test")
+    c.run("coverage run manage.py test --noinput")
     try:
         c.run("coverage html")
         c.run("coverage report")
@@ -34,3 +34,11 @@ def test(c):
 @task
 def style(c):
     c.run("pre-commit run --all-files")
+
+
+@task
+def build(c):
+    c.run("poetry lock")
+    c.run("poetry export --without-hashes -f requirements.txt -o requirements.txt")
+    c.run("cd frontend && pnpm run build")
+    c.run("python manage.py collectstatic --noinput")
