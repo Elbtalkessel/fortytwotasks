@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-s93de=13q&2sz4)#2_i^hg#@8&$#ua^a$!zfv+9jf5k4x)+9jo"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", False)
+DEBUG = bool(os.environ.get("DEBUG", False))
 
 ALLOWED_HOSTS = []
 
@@ -123,7 +123,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 DJANGO_VITE_ASSETS_PATH = BASE_DIR / "frontend" / "dist"
-DJANGO_VITE_DEV_MODE = os.environ.get("DJANGO_VITE_DEV_MODE", DEBUG)
+DJANGO_VITE_DEV_MODE = bool(os.environ.get("DJANGO_VITE_DEV_MODE", DEBUG))
 STATICFILES_DIRS = [DJANGO_VITE_ASSETS_PATH, BASE_DIR / "frontend" / "static"]
 DJANGO_VITE_DEV_SERVER_PORT = 3001
 

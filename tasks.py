@@ -39,6 +39,6 @@ def style(c):
 @task
 def build(c):
     c.run("poetry lock")
-    c.run("poetry export --without-hashes -f requirements.txt -o requirements.txt")
+    c.run("poetry export --with prod --without-hashes -f requirements.txt -o requirements.txt")
     c.run("cd frontend && pnpm run build")
     c.run("python manage.py collectstatic --noinput")
