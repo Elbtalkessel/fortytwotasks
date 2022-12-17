@@ -20,7 +20,7 @@ import apps.core.api.views
 import apps.todo.views
 
 urlpatterns = [
-    path("", apps.todo.views.index),
-    path("health/", apps.core.api.views.health),
+    path("", apps.todo.views.index, name="index"),
+    path("health/", apps.core.api.views.health, name="health"),
     path("admin/", admin.site.urls),
 ]
