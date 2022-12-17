@@ -18,6 +18,14 @@ poetry run pre-commit install
 cd frontend || exit 1
 pnpm install
 
+if [ ! -f ".env" ]
+then
+cat << "EOF" >> .env
+DEBUG=True
+ALLOWED_HOSTS=*
+EOF
+fi
+
 cat << 'EOF'
 Ready.
 Use `poetry run inv devserver` to start server, or manually start django and node server.

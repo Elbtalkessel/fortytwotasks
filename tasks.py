@@ -20,6 +20,11 @@ def devserver(c):
 
 
 @task
+def runserver(c):
+    c.run("DEBUG=False gunicorn -w 4 -b 0.0.0.0:8000 settings.wsgi:application")
+
+
+@task
 def test(c):
     c.run("coverage run manage.py test --noinput")
     try:
