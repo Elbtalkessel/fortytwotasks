@@ -7,16 +7,24 @@ checkPkg() {
     exit 1
   fi
 }
+checkVer() {
+  if [ "$1" != "$2" ]
+  then
+    echo "$3"
+    exit 1
+  fi
+}
 
 checkPkg poetry "Please install poetry https://python-poetry.org/docs/#installation"
+checkVer "$(poetry -V --no-ansi | grep -Po "\d+.\d+")" "1.3" "poetry version 1.3.x is required."
 checkPkg node "Please install nodejs https://github.com/nvm-sh/nvm"
 checkPkg pnpm "Please install pnpm https://pnpm.io/installation"
-checkPkg heroku "Please install and configure heroku-cli https://devcenter.heroku.com/articles/heroku-cli"
 
 poetry install
 poetry run pre-commit install
 cd frontend || exit 1
 pnpm install
+cd - || exit 1
 
 if [ ! -f ".env" ]
 then
@@ -26,8 +34,4 @@ ALLOWED_HOSTS=*
 EOF
 fi
 
-cat << 'EOF'
-Ready.
-Use `poetry run inv devserver` to start server, or manually start django and node server.
-Use `poetry run inv test` to run unittests, or switch to virtual environment using `poetry shell` and run `coverage run manage.py test`.
-EOF
+poetry run inv setup
