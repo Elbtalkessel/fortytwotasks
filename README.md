@@ -31,7 +31,7 @@ To make it easy we keep frontend build artifacts in repository: *frontend/static
 
 # How to work
 1. Start timer.
-2. Read task description on gitea carefully, understand the task requirements, if something is unclear - ask questions.
+2. Read [task](TASK.md) description, understand the task requirements, if something is unclear - ask questions.
 3. Plan your work before starting it, example:
     - [ ] Bootstrap project locally
     - [ ] Select hosting platform
